@@ -1,5 +1,5 @@
 // The function gets called when the window is fully loaded
-window.onload = function (){ 
+window.onload = function () {
     // Get the canvas and context
     var canvas = document.getElementById("viewport");
     var context = canvas.getContext("2d");
@@ -12,30 +12,41 @@ window.onload = function (){
 
     // Initialize the game
     function init() {
-         // Add mouse events
-         canvas.addEventListener("mousemove", onMouseMove);
-         canvas.addEventListener("mousedown", onMouseDown);
-         canvas.addEventListener("mouseup", onMouseUp);
-         canvas.addEventListener("mouseout", onMouseOut);
-  
-         // Initialize the square
-         square.width = 100;
-         square.height = 100;
-         square.x = level.x + (level.width - square.width) / 2;
-         square.y = level.y + (level.height - square.height) / 2;
-         square.xdir = 1;
-         square.ydir = 1;
-         square.speed = 200;
-  
-         // Initialize the score
-         score = 0;
-  
-         // Enter main loop
-         main(0);
-     }
+        // Add mouse events
+        canvas.addEventListener("mousemove", onMouseMove);
+        canvas.addEventListener("mousedown", onMouseDown);
+        canvas.addEventListener("mouseup", onMouseUp);
+        canvas.addEventListener("mouseout", onMouseOut);
 
-       
-    
+        // Square
+        var square = {
+            x: 0,
+            y: 0,
+            width: 0,
+            height: 0,
+            xdir: 0,
+            ydir: 0,
+            speed: 0
+        }
+
+        // Initialize the square
+        square.width = 100;
+        square.height = 100;
+        square.x = level.x + (level.width - square.width) / 2;
+        square.y = level.y + (level.height - square.height) / 2;
+        square.xdir = 1;
+        square.ydir = 1;
+        square.speed = 200;
+
+        // Initialize the score
+        score = 0;
+
+        // Enter main loop
+        main(0);
+    }
+
+
+
 
     // Main loop
     function main(tframe) {
@@ -51,14 +62,14 @@ window.onload = function (){
     function update(tframe) {
         var dt = (tframe - lastframe) / 1000;
         lastframe = tframe;
- 
+
         // Update the fps counter
         updateFps(dt);
- 
+
         // Move the square, time-based
         square.x += dt * square.speed * square.xdir;
         square.y += dt * square.speed * square.ydir;
- 
+
         // Handle left and right collisions with the level
         if (square.x <= level.x) {
             // Left edge
@@ -69,7 +80,7 @@ window.onload = function (){
             square.xdir = -1;
             square.x = level.x + level.width - square.width;
         }
- 
+
         // Handle top and bottom collisions with the level
         if (square.y <= level.y) {
             // Top edge
@@ -97,24 +108,24 @@ window.onload = function (){
         framecount++;
     }
 
-   
-        // Render the game
+
+    // Render the game
     function render() {
         // Draw the frame
         drawFrame();
- 
+
         // Draw the square
         context.fillStyle = "#ff8080";
         context.fillRect(square.x, square.y, square.width, square.height);
- 
+
         // Draw score inside the square
         context.fillStyle = "#ffffff";
         context.font = "38px Verdana";
         var textdim = context.measureText(score);
-        context.fillText(score, square.x+(square.width-textdim.width)/2, square.y+65);
+        context.fillText(score, square.x + (square.width - textdim.width) / 2, square.y + 65);
     }
-        // Draw the frame
-        drawFrame();
+    // Draw the frame
+    drawFrame();
 
     // Draw a frame with a border
     function drawFrame() {
@@ -159,14 +170,14 @@ window.onload = function (){
     // Call init to start the game
     init();
 
-// Level properties
+    // Level properties
     var level = {
         x: 1,
         y: 65,
         width: canvas.width - 2,
         height: canvas.height - 66
     };
- 
+
     // Square
     var square = {
         x: 0,
@@ -177,7 +188,7 @@ window.onload = function (){
         ydir: 0,
         speed: 0
     }
- 
+
     // Score
     var score = 0;
 };
