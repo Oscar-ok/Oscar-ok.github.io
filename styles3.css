@@ -53,7 +53,7 @@ box-sizing:border-box;
 
     @media screen and (max-width: 600px) {
         input {
-            font-size: 15px;
-            width: 70px
+            font-size: 70px;
+            width: 250px
         }
     }
