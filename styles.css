@@ -8,8 +8,8 @@ color: rgb(29, 153, 29);
 body{
   background-image:url(screenshot%20fuer%20webseite.png);
   background-position: center;
-  background-repeat:repeat;
-  background-size: fit;
+  background-repeat:no-repeat;
+  background-size: auto;
 }
 p{
   color: rgb(255, 255, 255);
@@ -27,7 +27,7 @@ p{
   margin:2px;
   background:#ccc;
   border:1px solid #bbb;
-  font-size:35pt;
+  font-size:24pt;
   color:#666;
 }
 
@@ -58,10 +58,3 @@ input:focus::placeholder {
 	color: silver;
 }
 
-h1{
-  font-size: 40pt;
-}
-
-u{
-  color:#19e95f
-}
